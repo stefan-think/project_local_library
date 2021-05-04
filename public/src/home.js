@@ -1,18 +1,25 @@
 const lib = require("./books");
 
+//Return the total number of books in the array
 function getTotalBooksCount(books) {
   return books.length;
 }
 
+//Return the total number of accounts in the array
 function getTotalAccountsCount(accounts) {
   return accounts.length;
 }
 
+/*Return the total number of books that are currently borrowed.
+By using the helper function, partitionBooksByBorrowedStatus().
+This function returns array containing 2 arrays. Array with index 0 contains books that have not been returned.
+*/
 function getBooksBorrowedCount(books) {
   const booksBorrowed = lib.partitionBooksByBorrowedStatus(books);
   return booksBorrowed[0].length;
 }
 
+//Return an ordered list of most common genres
 function getMostCommonGenres(books) {
   const bookGenres = books.map((book) => book.genre);
   const commonGenres = [];
@@ -32,7 +39,7 @@ function getMostCommonGenres(books) {
 
 }
 
-
+//Return an ordered list of most popular books. Limited to top 5 books.
 function getMostPopularBooks(books) {
   const popularBooks = [];
   books.forEach((book) => {
@@ -57,7 +64,7 @@ function getBooksByAuthorsId(books){
 }
 
 
-
+// Retrun the list of top five popular authors
 function getMostPopularAuthors(books, authors) {
     let count = 0;
   const idTotals = books.reduce((acc, { authorId, borrows }) => {
